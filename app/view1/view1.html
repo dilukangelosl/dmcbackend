@@ -1,0 +1,83 @@
+<div layout="row" ng-app="myApp" class="icondemoFontIconsWithLigatures" ng-cloak>
+
+<div flex="30" layout="column" class="boxWithHeight" layout-padding>
+    <h2>SITUATIONS</h2>
+    <section flex="40">
+        <h3>PENDING</h3>
+
+       <div class="scrollable">
+           <md-list flex>
+               <md-list-item class="md-3-line" ng-repeat="item in disasters" ng-if="item.status == 'Pending'" ng-click="showdisaster(item)">
+                   <div class="md-list-item-text" layout="column">
+                       <p>Date : {{item.reportdate}}</p>
+                       <h3>Disaster Type : {{ item.type }}</h3>
+                       <h4>Emergency Conatact {{ item.contact }}</h4>
+                       <p>Disaster City : {{ item.city }}</p>
+                       <p>Status : {{ item.status }}</p>
+                       <p>Approve : {{item.approved}}</p>
+                   </div>
+               </md-list-item>
+
+           </md-list>
+       </div>
+
+
+    </section>
+    <section flex>
+        <h3>CLOSED</h3>
+
+        <md-list flex>
+            <md-list-item class="md-3-line" ng-repeat="item in disasters" ng-if="item.status == 'Closed'" ng-click="showdisaster(item)">
+                <div class="md-list-item-text" layout="column">
+                    <p>Date : {{item.reportdate}}</p>
+                    <h3>Disaster Type : {{ item.type }}</h3>
+                    <h4>Emergency Conatact {{ item.contact }}</h4>
+                    <p>Disaster City : {{ item.city }}</p>
+                    <p>Status : {{ item.status }}</p>
+                    <p>Approve : {{item.approved}}</p>
+                </div>
+            </md-list-item>
+
+        </md-list>
+    </section>
+</div>
+<div flex layout="column" class="boxWithHeight" layout-padding>
+    flex
+    <section flex="70">
+        <div layout="row" flex>
+            <div layout="column" flex="60">
+                <h2>Disaster Details</h2>
+                <h2>Disaster Type :{{disaster.type}}</h2>
+                <h2>Name :{{disaster.fullname}}</h2>
+                <h2>NIC :{{disaster.nic}}</h2>
+                <h2>Phone: {{disaster.phone}}</h2>
+                <h2>Disaster Contact :{{disaster.contact}}</h2>
+                <h2>Date :{{disaster.reportdate}}</h2>
+            </div>
+
+            <div  layout="column" flex="40">
+                <img src="{{disaster.photo}}"  style="margin: 0 auto;display: block;">
+            </div>
+        </div>
+
+    </section>
+    <section flex="20"><h2>MAP</h2>
+
+
+
+        <div map-lazy-load="https://maps.google.com/maps/api/js">
+            <ng-map center="[{{disaster.latlng.lat}}, {{disaster.latlng.lng}}]" zoom="15">
+                <marker position="[{{disaster.latlng.lat}}, {{disaster.latlng.lng}}]" ></marker>
+            </ng-map>
+        </div>
+
+    </section>
+    <section flex >flex </section>
+</div>
+
+</div>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at https://material.angularjs.org/license.
+-->
