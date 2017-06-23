@@ -1,5 +1,77 @@
-<p>This is the partial for view 2.</p>
-<p>
-  Showing of 'interpolate' filter:
+<md-nav-bar
+        md-selected-nav-item="currentNavItem"
+        nav-bar-aria-label="navigation links">
+  <md-nav-item md-nav-click="goto('home')" name="home">
+    Disaster Manager
+  </md-nav-item>
+  <md-nav-item md-nav-click="goto('page2')" name="sos">
+    SOS
+  </md-nav-item>
+  <md-nav-item md-nav-click="goto('stats')" name="stats">
+    STATS
+  </md-nav-item>
 
-</p>
+
+
+</md-nav-bar>
+
+<style>
+  .label{
+    color:#1b1b1b;
+    font-size: 1em;
+  }
+</style>
+
+
+<div layout="row" ng-app="myApp" class="icondemoFontIconsWithLigatures" ng-cloak style="background: white; ">
+
+
+  <div>
+    <md-toolbar class="md-table-toolbar md-default">
+      <div class="md-toolbar-tools">
+        <span>Disaster Stat Table</span>
+        <input ng-model="search" placeholder="Search" style="margin-left: 10px;">
+      </div>
+    </md-toolbar>
+
+    <!-- exact table from live demo -->
+    <md-table-container>
+
+      <table md-table   ng-model="selected" md-progress="promise">
+        <thead md-head md-order="query.order" >
+        <tr md-row>
+          <th md-column ><span>Date</span></th>
+          <th md-column> <span>Disaster Type</span></th>
+          <th md-column >Name</th>
+          <th md-column >NIC</th>
+          <th md-column >Phone</th>
+          <th md-column >Disaster Contact</th>
+          <th md-column >Status</th>
+          <th md-column >Status Details</th>
+          <th md-column >Image</th>
+        </tr>
+        </thead>
+        <tbody md-body>
+        <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="item in disasters | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit | filter:search">
+
+          <td md-cell>{{item.reportdate}}</td>
+          <td md-cell>{{item.type}}</td>
+          <td md-cell>{{item.fullname}}</td>
+          <td md-cell>{{item.nic}}</td>
+          <td md-cell>{{item.phone}}</td>
+          <td md-cell>{{item.contact}}</td>
+          <td md-cell>{{item.status}}</td>
+          <td md-cell>{{item.statusdetails}}</td>
+          <td md-cell><md-button md-primary ng-click="view(item.photo)">View Image</md-button></td>
+        </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+
+    <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{disasters.length}}"  md-page-select></md-table-pagination>
+
+   <h2>count :  {{disasters.length}}</h2>
+  </div>
+
+</div>
+

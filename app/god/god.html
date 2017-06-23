@@ -1,0 +1,113 @@
+<md-content>
+    <div map-lazy-load="{{googleMapsUrl}}">
+        <ng-map center="[{{lat}}, {{lng}}]" zoom="{{zoom}}" style="height: 100vh;width: 100vw;">
+            <!--<marker position="[{{disaster.latlng.lat}}, {{disaster.latlng.lng}}]" ></marker>-->
+
+
+
+            <div ng-if="disastertype == 'All'">
+
+                <custom-marker id="foo" position="[{{disaster.latlng.lat}}, {{disaster.latlng.lng}}]"   on-click="setinfo('foo')" ng-repeat="disaster in disasters"  animation="DROP">
+                    <div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Flashspot.gif" width="40" />
+                    </div>
+                </custom-marker>
+
+                <marker position="[{{disaster.latlng.lat}}, {{disaster.latlng.lng}}]"
+
+                        animation="DROP"
+                        draggable="true"
+                        ng-repeat="disaster in disasters"></marker>
+
+            </div>
+
+
+            <div ng-if="disastertype != 'All'">
+
+                <custom-marker id="foo" position="[{{disaster.latlng.lat}}, {{disaster.latlng.lng}}]"    on-click="setinfo('foo')" ng-repeat="disaster in disasters"
+                               animation="DROP"
+                                ng-if="disaster.type == disastertype">
+                    <div>
+
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Flashspot.gif" width="40" />
+                    </div>
+                </custom-marker>
+
+                <marker position="[{{disaster.latlng.lat}}, {{disaster.latlng.lng}}]"
+
+                        animation="DROP"
+                        draggable="true"
+                        ng-repeat="disaster in disasters"
+                        ng-if="disaster.type == disastertype"></marker>
+
+            </div>
+
+
+
+
+        </ng-map>
+    </div>
+
+
+    <div class="userlist" ng-class="cls">
+      <div layout="row">  <h2>Online </h2>
+          <div class="online"></div></div>
+        <div ng-repeat="item in agents" class="agentcard" ng-if="item.status == 'online'">
+           <h1>Name : {{item.name}}</h1>
+            <h1>Work : {{item.work}}</h1>
+
+        </div>
+
+
+
+        <div layout="row">  <h2>Offline </h2>
+            <div class="online" style="background: red"></div></div>
+        <div ng-repeat="item in agents" class="agentcard" ng-if="item.status != 'online'">
+            <h1>Name : {{item.name}}</h1>
+            <h1>Work : {{item.work}}</h1>
+
+        </div>
+
+        <button md-button ng-click="reset()" style="background: white;">Reset Map</button>
+    </div>
+
+    <div class="controlpanel">
+        <h4>Disaster Type</h4>
+        <md-radio-group ng-model="disastertype">
+            <md-radio-button value="All" class="md-primary">All</md-radio-button>
+            <md-radio-button value="Landslide" >Landslide</md-radio-button>
+            <md-radio-button value="Flood"> Flood </md-radio-button>
+            <md-radio-button value="Cyclone">Cyclone</md-radio-button>
+            <md-radio-button value="Industrial Hazard">Industrial Hazard</md-radio-button>
+            <md-radio-button value="Tsunami">Tsunami</md-radio-button>
+            <md-radio-button value="Earthquake">Earthquake</md-radio-button>
+            <md-radio-button value="Fire">Fire</md-radio-button>
+            <md-radio-button value="Other">Other</md-radio-button>
+
+        </md-radio-group>
+
+        <div style="background: rgba(0,0,0,0.9); padding: 5px;">
+            <div style="max-height: 300px;overflow-y: scroll">
+                <h4 style="color:white;">Latest Pending Disasters</h4>
+
+                <div ng-repeat="disaster in disasters" ng-if="disaster.status == 'Pending'" style="border: solid 1px red;padding: 2px;" ng-click="showinmap(disaster)">
+                    <p style="color: red">{{disaster.type}} || {{disaster.agentname}}</p>
+                    <p style="color:white;">{{disaster.reportdate}}</p>
+
+                </div>
+            </div>
+
+            <div style="max-height: 300px;overflow-y: scroll">
+                <h4 style="color:white;">Closed Disasters</h4>
+
+                <div ng-repeat="disaster in disasters" ng-if="disaster.status == 'Closed'" style="border: solid 1px green;padding: 2px;margin-bottom: 2px;" ng-click="showinmap(disaster)">
+                    <p style="color: green">{{disaster.type}} || {{disaster.agentname}}</p>
+                    <p style="color:white;">{{disaster.statusdetails}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</md-content>

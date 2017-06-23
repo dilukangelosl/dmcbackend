@@ -3,23 +3,35 @@ body[ng-cloak] {
   display:none;
 }
 body {
-  background-color: #FEEBC8;
+  background-color: #1b1b1b;
 }
 div[flex="30"] {
-  background-color: #DFDFDF;
+  background-color: #1b1b1b;
 }
 
 section[flex="40"] {
-  background-color: #D4E5FA;
+  background-color: white;
+  border-color: #0e0e0e;
 }
 section[flex="70"] {
-  background-color: #E8FCD6;
+  background-color: white;
 }
 section[flex="20"] {
   background-color: #FFD5E3;
 }
 section[flex=""] {
-  background-color: rgba(0, 128, 0, 0.35);
+  background-color: white;
+}
+
+h2{
+  color: #fe4081;
+}
+
+#h3{
+  color:#fe4081;
+  padding:3px;
+  text-align: center;
+  border-bottom: 2px solid #fe4081;
 }
 
 
@@ -49,11 +61,238 @@ md-list-item.md-3-line, md-list-item.md-3-line>.md-no-style{
   min-height: 88px;
 
   padding: 5px;
-  border: 4px solid red;
+  border: 1px solid #1d1f21;
   margin: 5px;
+}
+
+md-list-item:hover{
+  background:#fe4081;
+  transition:all 1s ease;
+  border: none;
+}
+
+md-list-item:hover h3 h4 p{
+  color:white;
 }
 
 .scrollable{
   height:350px;
   overflow-y: scroll;
+}
+
+md-nav-bar.md-default-theme .md-nav-bar, md-nav-bar .md-nav-bar{
+  background: #1b1b1b;
+}
+
+md-nav-bar.md-default-theme .md-button._md-nav-button.md-unselected, md-nav-bar .md-button._md-nav-button.md-unselected{
+  color:white;
+}
+
+.details h2{
+  line-height: 15px;
+  font-weight: 400;
+  color:#1b1b1b;
+  font-size: 1.4em;
+}
+
+.details h2 span{
+  font-weight: bold;
+  margin-left: 5px;
+  color: red;
+}
+
+#stat{
+  background: #0e0e0e;
+  border: 3px solid red;
+  padding: 5px;
+
+}
+
+#stat h1{
+  color:yellow;
+  font-size: 1.2em;
+}
+
+md-dialog.md-transition-in, md-dialog.md-transition-out{
+  background: red;
+  color: white;
+  transform: scale(2,2);
+  font-size:1.5em;
+  width: 400px;
+}
+
+md-dialog md-dialog-content:not([layout=row])>:first-child:not(.md-subheader) {
+  color: white;
+  text-align: center;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+
+}
+
+.md-button.md-default-theme.md-primary, .md-button.md-primary{
+  color:white;
+}
+
+md-dialog md-dialog-content{
+  height: 100px;
+}
+md-dialog md-dialog-content .md-dialog-content-body{
+  text-align: center;
+}
+
+@keyframes example {
+  0%   {font-size: 1em;}
+  100% {font-size: 1.2em;}
+}
+
+md-card {
+  padding: 0!important;}
+
+md-card-title {
+  background-color: blue;
+}
+
+.loginbg{
+  background: url('/login/bg.jpg');
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position:center ;
+  height: 100vh;
+  width: 100vw;
+}
+
+.userlist{
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  background: rgba(0,0,0,0.8);
+  opacity: 0;
+  width: 250px;
+  padding: 10px;
+  max-height: 0;
+  transition:all 1s ease-out;
+
+}
+
+.controlpanel{
+  position: fixed;
+  top: 2%;
+  right: 2%;
+  background: rgba(255,255,255,0.8);
+  opacity: 1;
+  width: 250px;
+  padding: 10px;
+
+  transition:all 1s ease-out;
+}
+.max{
+  opacity: 1;
+  max-height: 400px !important;
+  overflow-y: scroll;
+}
+.agentcard{
+  padding: 10px;
+  width: 100%;
+  background: rgba(0,0,0,0.8);
+  margin-bottom: 5px;
+  border: solid 1px white;
+  transition: max-height 0.15s ease-out;
+  max-height:600px;
+}
+
+.online{    width: 20px;
+  height: 20px;
+  background: #99cc4c;
+  display: block;
+  float: right;
+  clear: both;
+  border-radius: 50%;
+  margin: 27px;
+}
+
+.agentcard h1{
+  font-size: 1em;
+  color:white;
+  line-height: 0.5em;
+
+}
+
+.custom-marker {
+}
+.custom-marker.my1 {
+  font-size: 1.5em;
+  padding: 10px;
+  background: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: #7F7F7F solid 1px;
+}
+
+.custom-marker.my1:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 7px 6px 0;
+  border-color: #fff transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  margin-left: -6px;
+  bottom: -6px;
+  left: 50%;
+}
+
+.custom-marker.my1:before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 7px 6px 0;
+  border-color: #7F7F7F transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  margin-left: -6px;
+  bottom: -7px;
+  left: 50%;
+}
+
+.custom-marker.my2 {
+  font-size: 1.5em;
+  padding: 10px;
+  background: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: #7F7F7F solid 1px;
+  background: red;
+}
+
+.custom-marker.my2:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 7px 6px 0;
+  border-color: red transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  margin-left: -6px;
+  bottom: -6px;
+  left: 50%;
+}
+
+.custom-marker.my2:before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 7px 6px 0;
+  border-color: #7F7F7F transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  margin-left: -6px;
+  bottom: -7px;
+  left: 50%;
 }
